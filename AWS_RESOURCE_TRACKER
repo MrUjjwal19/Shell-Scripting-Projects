@@ -1,0 +1,34 @@
+This is the shell script of my project which displays all the resources being used in the aws .
+
+
+#!/bin/bash
+
+#########################
+# Author: Ujjwal Anand
+# Date: 12th july 2024
+#
+# Version: v1
+#
+# This Script will report the AWS RESOURCES usage
+# #######################
+set -x
+# AWS S3
+# AWS EC2
+# AWS LAMBDA
+# AWS IAM Users
+
+#List S3 Buckets
+echo "Print list of S3 buckets"
+aws s3 ls
+
+#List EC2 Instances
+echo "Print list of Ec2 Instances"
+aws ec2 describe-instances | jq '.Reservations[].Instances[].InstanceId'
+
+#List AWS LAMBDA
+echo "Print list of Lambda functions"
+aws lambda list-functions
+
+#List IAM Users
+echo "Print list of IAM Users"
+aws iam list-users
